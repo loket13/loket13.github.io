@@ -18,16 +18,16 @@ document.getElementById("closeBtn").addEventListener("click", function (){
 async function sett(k,v){
   tg.CloudStorage.setItem(k, v, function(error, saved) {
     if (err) {
-       console.log('Error: ' + error);
+       console.log(error);
     } else {
-        console.log(saved.toString())
+        console.log(saved.result);
     }
 })};
 
 async function gett(k){
   tg.CloudStorage.getItem(k, function(error, value){
     if (error) {
-      console.log(error, null);
+      console.log(error);
   } else {
       console.log(value.toString());
   }
