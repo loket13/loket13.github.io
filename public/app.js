@@ -26,7 +26,7 @@ window.Telegram.WebApp.ready();
 
 // Store the Telegram WebApp object
 const tg = window.Telegram.WebApp;
-
+tg.expand();
 // Set the main button color, text, and visibility
 tg.MainButton.text = "Press Me!";
 tg.MainButton.color = "#FF5722";
