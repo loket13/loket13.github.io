@@ -16,23 +16,41 @@ document.getElementById("closeBtn").addEventListener("click", function (){
 
 
 async function sett(k,v){
-  tg.CloudStorage.setItem(k,v, function(error){
-    if (error) {
-        console.log('Error occurred while storing:', error);
+
+  Telegram.WebApp.CloudStorage.setItem(key, value, function(err, saved) {
+    if (err) {
+        DemoApp.showAlert('Error: ' + err);
     } else {
-        console.log('Data stored successfully!');
+        if (saved) {
+            if (typeof DemoApp.cloudStorageItems[key] === 'undefined') {
+                DemoApp.cloudStorageKeys.push(key);
+            }
+            DemoApp.cloudStorageItems[key] = value;
+        }
+        form.reset();
+        DemoApp.updateCloudRows();
+    }
+});
+
+
+
+  tg.CloudStorage.setItem(k, v, function(error, saved){
+    if (error) {
+      console.log('error : '+ error);
+    } else {
+      if (saved) {
+        console.log(save)
+      } 
     }
   });
 };
 async function gett(k){
   tg.CloudStorage.getItem(k, function(error, value){
     if (error) {
-      // If there's an error, pass the error to the callback
-      console.log(error.result, null);
+      console.log(error, null);
   } else {
-      // If successful, pass null for error and the value
       console.log(null, value.result);
-      return value
+      return value.result;
   }
   });
 };
@@ -41,13 +59,11 @@ document.getElementById("setDataBtn").addEventListener("click", async function()
   let key = document.getElementById('setKeyInput').value;
   let val = document.getElementById('setValInput').value;
   let res = await sett(key, val);
-  console.log(res);
   document.getElementById('resSetBox').value = res;
 });
 document.getElementById("getDataBtn").addEventListener("click", async function(){
   let key = document.getElementById('getKeyInput').value;
   let val = await gett(key);
-  console.log(val);
   document.getElementById('resGetBox').value = val;
 });
 
