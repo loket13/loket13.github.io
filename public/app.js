@@ -63,7 +63,7 @@ async function gett(k) {
         reject(error);
       } else {
         console.log(resp);
-        resolve(resp ? resp.toString() : 'No value found');
+        resolve(resp.length > 1 ? resp.toString() : 'No keys found');
       }
     });
   });
