@@ -21,11 +21,13 @@ body {
     background-color: var(--bg);
     color: var(--cl);
     min-height: 100vh;
+    padding: 2rem;
 }
-h1, h2, h3, section, label, input, select {
+h1, h2, h3, section, label, input, textarea, select {
     display: block;
+    width: 100%;
 }
-h1, h2, h3, select, input, select {
+h1, h2, h3, section, select, input, textarea, select {
     margin-bottom: 1rem;
 }
 h1, h2, h3 {
@@ -40,19 +42,22 @@ h2 {
 h3 {
     font-size: 1.5rem;
 }
-label, input, select, button {
+label, input, textarea, select, button {
     font-size: 1rem;
 }
-input, select, button {
+input, textarea, select, button {
     border: solid 1px var(--cl);
 }
-
-
-
+input, textarea, select {
+    padding: 0.5rem;
+}
+textarea {
+    min-height: 6rem;
+    resize: vertical;
+}
 
 button {
     padding: 0.5rem 1rem;
-    border-radius: 0.25rem;
     cursor: pointer;
 }
 button:hover {
@@ -61,6 +66,34 @@ button:hover {
 }
 
 
+.lean {
+    display: block;
+    max-width: 32rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+.fw {
+    width: 100%;
+}
+.card {
+    display: block;
+    padding: 1rem;
+    border: solid 1px var(--cl);
+}
 .ctr {
     text-align: center;
+}
+.line {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0;
+}
+.line > * {
+    flex: 0 0 max-content;
+}
+.line > div {
+    flex: 1 1 auto;
 }
