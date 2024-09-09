@@ -16,8 +16,7 @@ document.getElementById("closeBtn").addEventListener("click", function (){
 
 
 async function sett(k,v){
-
-  Telegram.WebApp.CloudStorage.setItem(k, v, function(error, saved) {
+  tg.CloudStorage.setItem(k, v, function(error, saved) {
     if (err) {
        console.log('Error: ' + error);
     } else {
@@ -25,7 +24,7 @@ async function sett(k,v){
           console.log(saved.toString())
         }
     }
-});
+})};
 
 async function gett(k){
   tg.CloudStorage.getItem(k, function(error, value){
