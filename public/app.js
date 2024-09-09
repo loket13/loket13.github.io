@@ -17,10 +17,10 @@ document.getElementById("closeBtn").addEventListener("click", function (){
 
 async function sett(k,v){
   tg.CloudStorage.setItem(k, v, function(error, saved) {
-    if (err) {
+    if (error) {
        console.log(error);
     } else {
-        console.log(saved.result);
+        console.log(saved);
     }
 })};
 
