@@ -44,6 +44,8 @@ async function sett(k,v){
        console.log(error);
        return 'Error';
     } else {
+        console.log(resp);
+        console.log(resp.toString());
         if(resp.result = true){
           return 'Saved';
         };
@@ -55,7 +57,9 @@ async function gett(k){
     if (error) {
       return error;
     } else {
-        return resp.toString();
+      console.log(resp);
+      console.log(resp.toString());
+      return resp.toString();
     }
   });
 };
@@ -87,25 +91,29 @@ async function remm(k){
 document.getElementById("setDataBtn").addEventListener("click", async function(){
   let key = document.getElementById('setKeyInput').value;
   let val = document.getElementById('setValInput').value;
-  let res = sett(key, val);
-  document.getElementById('resSetBox').value = res;
+  gett(key, val).then(res => {
+    document.getElementById('resSetBox').value = res;
+  });
 });
 
 document.getElementById("getDataBtn").addEventListener("click", async function(){
   let key = document.getElementById('getKeyInput').value;
-  let res = gett(key);
-  document.getElementById('resGetBox').value = res;
+  gett(key).then(res => {
+    document.getElementById('resGetBox').value = res;
+  });
 });
 
 document.getElementById("listDataBtn").addEventListener("click", async function(){
-  let res = list();
-  document.getElementById('resListBox').value = res;
+  list().then(res => {
+    document.getElementById('resListBox').value = res;
+  });
 });
 
 document.getElementById("remDataBtn").addEventListener("click", async function(){
   let key = document.getElementById('remKeyInput').value;
-  let res = remm(key);
-  document.getElementById('resRemBox').value = res;
+  remm(key).then(res => {
+    document.getElementById('resRemBox').value = res;
+  });
 });
 
 // Handle the main button being pressed
