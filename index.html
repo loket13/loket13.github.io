@@ -14,34 +14,59 @@
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
+  <container-box>
+    <header>
+      <i id="setBoxBtn">Set Item</i>
+      <i id="getBoxBtn">Get Item</i>
+      <i id="listBoxBtn">Get List</i>
+      <i id="remBoxBtn">Remove Item</i>
+    </header>
 
-  <section class="lean card">
-    <label for="setKeyInput">key</label>
-    <input type="text" id="setKeyInput">
-    <label for="setValInput">value</label>
-    <input type="text" id="setValInput">
+    <main id="setBox">
+      <h2>#Set Item Box</h2>
+      <label for="setKeyInput">Input Key</label>
+      <input type="text" id="setKeyInput">
+      <label for="setValInput">Input Value</label>
+      <input type="text" id="setValInput">
+      <button id="setDataBtn" class="fw">Set Data</button>
+      <br>
 
-    <div class="line">
-      <div></div>
-      <button id="setDataBtn">Set Data</button>
-    </div>
+      <label for="setResBox">Result:</label>
+      <textarea name="setResBox" id="setResBox"></textarea>
+    </main>
+  
+    <main id="getBox">
+      <h2>#Get Item Box</h2>
+      <label for="getKeyInput">Input Key</label>
+      <input type="text" id="getKeyInput">
+      <button id="getDataBtn" class="fw">Get Data</button>
+      <br>
 
-    <label for="resSetBox">Result</label>
-    <textarea name="resSetBox" id="resSetBox"></textarea>
-  </section>
+      <label for="resGetBox">Result</label>
+      <textarea name="resGetBox" id="resGetBox"></textarea>
+    </main>
+  
+    <main id="listBox">
+      <h2>#List Keys Box</h2>
+      <button id="listDataBtn" class="fw">Get List of Keys</button>
+      <br>
 
-  <section class="lean card">
-    <label for="getKeyInput">key</label>
-    <input type="text" id="getKeyInput">
+      <label for="resListBox">Result</label>
+      <textarea name="resListBox" id="resListBox"></textarea>
+    </main>
+  
+    <main id="remBox">
+      <h2>#Remove Item Box</h2>
+      <label for="remKeyInput">Key</label>
+      <input type="text" id="remKeyInput">
+      <button id="remDataBtn" class="fw">Remove Data</button>
+      <br>
 
-    <div class="line">
-      <div></div>
-      <button id="getDataBtn">Get Data</button>
-    </div>
-    <label for="resGetBox">Result</label>
-    <textarea name="resGetBox" id="resGetBox"></textarea>
-  </section>
-
+      <label for="resRemBox">Result</label>
+      <textarea name="resRemBox" id="resRemBox"></textarea>
+    </main>
+  </container-box>
+  <br>
   <button id="closeBtn" class="fw lean">Close WebApp</button>
 
  
