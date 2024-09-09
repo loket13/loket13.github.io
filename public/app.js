@@ -76,7 +76,7 @@ async function list() {
         reject(error);
       } else {
         console.log(resp);
-        resolve(resp ? resp.toString() : 'No keys found');
+        resolve(resp.length > 0 ? resp.toString() : 'No keys found');
       }
     });
   });
