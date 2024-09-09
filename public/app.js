@@ -46,7 +46,7 @@ async function sett(k,v){
     } else {
         console.log(resp);
         console.log(resp.toString());
-        if(resp.result = true){
+        if(resp = true){
           return 'Saved';
         };
     }
@@ -59,8 +59,7 @@ async function gett(k){
     } else {
       console.log(resp);
       console.log(resp.toString());
-      let res = resp.toString();
-      return res;
+      return resp;
     }
   });
 };
@@ -71,8 +70,7 @@ async function list(){
     } else {
       console.log(resp);
       console.log(resp.toString())
-      let res = resp.toString();
-      return res;
+      return resp;
     }
   });
 };
@@ -83,7 +81,7 @@ async function remm(k){
     } else {
       console.log(resp);
       console.log(resp.toString());
-      if(resp.result = true){
+      if(resp = true){
         return 'Removed';
       };
     }
