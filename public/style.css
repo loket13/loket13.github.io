@@ -108,8 +108,10 @@ container-box > main {
 container-box > main > * {
     flex: 0 0 max-content;
 }
-container-box > main > textarea {
+container-box > main > div:last-of-type {
     flex: 1 1 auto;
+    border: solid 1px var(--cl);
+    padding: 0.5rem;
 }
 .lean {
     display: block;
