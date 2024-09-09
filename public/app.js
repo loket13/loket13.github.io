@@ -1,3 +1,26 @@
+const contIds = ['setBox', 'getBox', 'listBox', 'remBox'];
+
+function switchBox(nb){
+  for (let i = 0; i < contIds.length; i++) {
+    document.getElementById(contIds[i]).classList.add('hide');
+  };
+  document.getElementById(nb).classList.remove('hide');
+};
+
+document.getElementById("setBoxBtn").addEventListener("click", function (){
+  switchBox('setBox');
+});
+document.getElementById("getBoxBtn").addEventListener("click", function (){
+  switchBox('getBox');
+});
+document.getElementById("listBoxBtn").addEventListener("click", function (){
+  switchBox('listBox');
+});
+document.getElementById("remBoxBtn").addEventListener("click", function (){
+  switchBox('remBox');
+});
+
+
 // Wait until Telegram WebApp SDK is ready
 window.Telegram.WebApp.ready();
 
@@ -19,29 +42,68 @@ async function sett(k,v){
   tg.CloudStorage.setItem(k, v, function(error, saved) {
     if (error) {
        console.log(error);
+       return 'Error';
     } else {
-        console.log(saved);
+        if(saved.result = true){
+          return 'Saved';
+        };
     }
 })};
 
 async function gett(k){
   tg.CloudStorage.getItem(k, function(error, value){
     if (error) {
-      console.log(error);
-  } else {
+      return error;
+    } else {
+        return value.toString();
+    }
+  });
+};
+async function list(){
+  tg.CloudStorage.getKeys(function(error, value){
+    if (error) {
+      return error;
+    } else {
+      console.log(value);
+      console.log(value.toString())
+      return value.toString();
+    }
+  });
+};
+async function remm(k){
+  tg.CloudStorage.removeItem(k, function(error, value){
+    if (error) {
+      return error;
+    } else {
+      console.log(value);
       console.log(value.toString());
-  }
+      return value.toString();
+    }
   });
 };
 
 document.getElementById("setDataBtn").addEventListener("click", async function(){
   let key = document.getElementById('setKeyInput').value;
   let val = document.getElementById('setValInput').value;
-  sett(key, val);
+  let res = await sett(key, val);
+  document.getElementById('setResBox').value = res;
 });
+
 document.getElementById("getDataBtn").addEventListener("click", async function(){
   let key = document.getElementById('getKeyInput').value;
-  await gett(key);
+  let res = await gett(key);
+  document.getElementById('resGetBox').value = res;
+});
+
+document.getElementById("listDataBtn").addEventListener("click", async function(){
+  let res = await list();
+  document.getElementById('resListBox').value = res;
+});
+
+document.getElementById("remDataBtn").addEventListener("click", async function(){
+  let key = document.getElementById('remKeyInput').value;
+  let res = await remm(key);
+  document.getElementById('resRemBox').value = res;
 });
 
 // Handle the main button being pressed
@@ -55,5 +117,8 @@ tg.MainButton.onClick(function (){
 });
 
 // Make the WebApp theme match the Telegram client theme
-document.body.style.backgroundColor = tg.themeParams.bg_color || "#ffffff";
-document.body.style.color = tg.themeParams.text_color || "#000000";
+//document.body.style.backgroundColor = tg.themeParams.bg_color || "#ffffff";
+//document.body.style.color = tg.themeParams.text_color || "#000000";
+
+
+switchBox('setBox');
