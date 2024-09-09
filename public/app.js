@@ -91,7 +91,7 @@ async function remm(k){
 document.getElementById("setDataBtn").addEventListener("click", async function(){
   let key = document.getElementById('setKeyInput').value;
   let val = document.getElementById('setValInput').value;
-  gett(key, val).then(res => {
+  sett(key, val).then(res => {
     document.getElementById('resSetBox').value = res;
   });
 });
