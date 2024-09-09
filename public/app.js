@@ -39,45 +39,47 @@ document.getElementById("closeBtn").addEventListener("click", function (){
 
 
 async function sett(k,v){
-  tg.CloudStorage.setItem(k, v, function(error, saved) {
+  tg.CloudStorage.setItem(k, v, function(error, resp) {
     if (error) {
        console.log(error);
        return 'Error';
     } else {
-        if(saved.result = true){
+        if(resp.result = true){
           return 'Saved';
         };
     }
 })};
 
 async function gett(k){
-  tg.CloudStorage.getItem(k, function(error, value){
+  tg.CloudStorage.getItem(k, function(error, resp){
     if (error) {
       return error;
     } else {
-        return value.toString();
+        return resp.toString();
     }
   });
 };
 async function list(){
-  tg.CloudStorage.getKeys(function(error, value){
+  tg.CloudStorage.getKeys(function(error, resp){
     if (error) {
       return error;
     } else {
-      console.log(value);
-      console.log(value.toString())
-      return value.toString();
+      console.log(resp);
+      console.log(resp.toString())
+      return resp.toString();
     }
   });
 };
 async function remm(k){
-  tg.CloudStorage.removeItem(k, function(error, value){
+  tg.CloudStorage.removeItem(k, function(error, resp){
     if (error) {
       return error;
     } else {
-      console.log(value);
-      console.log(value.toString());
-      return value.toString();
+      console.log(resp);
+      console.log(resp.toString());
+      if(resp.result = true){
+        return 'Removed';
+      };
     }
   });
 };
