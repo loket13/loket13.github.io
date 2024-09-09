@@ -85,24 +85,24 @@ async function remm(k){
 document.getElementById("setDataBtn").addEventListener("click", async function(){
   let key = document.getElementById('setKeyInput').value;
   let val = document.getElementById('setValInput').value;
-  let res = await sett(key, val);
-  document.getElementById('setResBox').value = res;
+  let res = sett(key, val);
+  document.getElementById('resSetBox').value = res;
 });
 
 document.getElementById("getDataBtn").addEventListener("click", async function(){
   let key = document.getElementById('getKeyInput').value;
-  let res = await gett(key);
+  let res = gett(key);
   document.getElementById('resGetBox').value = res;
 });
 
 document.getElementById("listDataBtn").addEventListener("click", async function(){
-  let res = await list();
+  let res = list();
   document.getElementById('resListBox').value = res;
 });
 
 document.getElementById("remDataBtn").addEventListener("click", async function(){
   let key = document.getElementById('remKeyInput').value;
-  let res = await remm(key);
+  let res = remm(key);
   document.getElementById('resRemBox').value = res;
 });
 
