@@ -15,10 +15,34 @@
 </head>
 <body>
 
-  <section class="ctr">
-    <h1>TMA Test</h1>
-    <button id="closeBtn">Close WebApp</button>
+  <section class="lean card">
+    <label for="setKeyInput">key</label>
+    <input type="text" id="setKeyInput">
+    <label for="setValInput">value</label>
+    <input type="text" id="setValInput">
+
+    <div class="line">
+      <div></div>
+      <button id="setDataBtn">Set Data</button>
+    </div>
+
+    <label for="resSetBox">Result</label>
+    <textarea name="resSetBox" id="resSetBox"></textarea>
   </section>
+
+  <section class="lean card">
+    <label for="getKeyInput">key</label>
+    <input type="text" id="getKeyInput">
+
+    <div class="line">
+      <div></div>
+      <button id="getDataBtn">Get Data</button>
+    </div>
+    <label for="resGetBox">Result</label>
+    <textarea name="resGetBox" id="resGetBox"></textarea>
+  </section>
+
+  <button id="closeBtn" class="fw lean">Close WebApp</button>
 
  
 
