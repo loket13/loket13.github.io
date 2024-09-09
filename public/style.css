@@ -21,26 +21,28 @@ body {
     background-color: var(--bg);
     color: var(--cl);
     min-height: 100vh;
-    padding: 2rem;
+    padding: 1rem;
 }
 h1, h2, h3, section, label, input, textarea, select {
     display: block;
     width: 100%;
 }
-h1, h2, h3, section, select, input, textarea, select {
+section, select, input, textarea, select {
     margin-bottom: 1rem;
 }
 h1, h2, h3 {
     font-weight: 600;
+    margin: 0.5rem 0;
+    line-height: 1.2;
 }
 h1 {
-    font-size: 3.2rem;
-}
-h2 {
     font-size: 2.0rem;
 }
-h3 {
+h2 {
     font-size: 1.5rem;
+}
+h3 {
+    font-size: 1.2rem;
 }
 label, input, textarea, select, button {
     font-size: 1rem;
@@ -66,6 +68,49 @@ button:hover {
 }
 
 
+
+container-box {
+    display: block;
+    max-width: 32rem;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid 1px var(--cl);
+    padding: 0;
+}
+container-box > header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 1px;
+    border-bottom: solid 1px var(--cl);
+    background-color: var(--cl);
+}
+container-box > header > i {
+    flex: 1 1 auto;
+    background-color: var(--bg);
+    color: var(--cl);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+container-box > header > i:hover {
+    background-color: var(--cl);
+    color: var(--bg);
+}
+container-box > main {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 0;
+    width: auto;
+    padding: 1rem;
+    min-height: calc(100vh - 12rem);
+}
+container-box > main > * {
+    flex: 0 0 max-content;
+}
+container-box > main > textarea {
+    flex: 1 1 auto;
+}
 .lean {
     display: block;
     max-width: 32rem;
@@ -96,4 +141,7 @@ button:hover {
 }
 .line > div {
     flex: 1 1 auto;
+}
+.hide {
+    display: none;
 }
