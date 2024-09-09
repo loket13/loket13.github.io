@@ -103,7 +103,7 @@ container-box > main {
     gap: 0;
     width: auto;
     padding: 1rem;
-    min-height: calc(100vh - 12rem);
+    min-height: calc(100vh - 15rem);
 }
 container-box > main > * {
     flex: 0 0 max-content;
