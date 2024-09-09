@@ -16,21 +16,38 @@ document.getElementById("closeBtn").addEventListener("click", function (){
 
 
 async function sett(k,v){
-  let res = await tg.CloudStorage.setItem(k,v);
-  return res;
+  tg.CloudStorage.setItem(k,v, function(error){
+    if (error) {
+        console.log('Error occurred while storing:', error);
+    } else {
+        console.log('Data stored successfully!');
+    }
+  });
 };
 async function gett(k){
-  return tg.CloudStorage.getItem(k);
+  tg.CloudStorage.getItem(k, function(error, value){
+    if (error) {
+      // If there's an error, pass the error to the callback
+      console.log(error.result, null);
+  } else {
+      // If successful, pass null for error and the value
+      console.log(null, value.result);
+      return value
+  }
+  });
 };
+
 document.getElementById("setDataBtn").addEventListener("click", async function(){
   let key = document.getElementById('setKeyInput').value;
   let val = document.getElementById('setValInput').value;
   let res = await sett(key, val);
+  console.log(res);
   document.getElementById('resSetBox').value = res;
 });
 document.getElementById("getDataBtn").addEventListener("click", async function(){
   let key = document.getElementById('getKeyInput').value;
   let val = await gett(key);
+  console.log(val);
   document.getElementById('resGetBox').value = val;
 });
 
