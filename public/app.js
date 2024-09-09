@@ -5,9 +5,9 @@ window.Telegram.WebApp.ready();
 const tg = window.Telegram.WebApp;
 
 // Set the main button color, text, and visibility
-tg.BottomButton.text = "Press Me!";
-tg.BottomButton.color = "#FF5722";
-tg.BottomButton.show();
+tg.MainButton.text = "Press Me!";
+tg.MainButton.color = "#FF5722";
+tg.MainButton.show();
 
 // Setup close button click action to close the WebApp
 document.getElementById("closeBtn").addEventListener("click", function (){
@@ -37,13 +37,13 @@ document.getElementById("getDataBtn").addEventListener("click", async function()
 });
 
 // Handle the main button being pressed
-tg.BottomButton.onClick(function (){
+tg.MainButton.onClick(function (){
   alert('Main button was clicked!');
   // Send data back to the Telegram bot
   tg.sendData('Main button was clicked!');
   
   // You can hide the main button after the first click, if needed
-  tg.BottomButton.hide();
+  tg.MainButton.hide();
 });
 
 // Make the WebApp theme match the Telegram client theme
