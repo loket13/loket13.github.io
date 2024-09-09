@@ -59,7 +59,8 @@ async function gett(k){
     } else {
       console.log(resp);
       console.log(resp.toString());
-      return resp.toString();
+      let res = resp.toString();
+      return res;
     }
   });
 };
@@ -70,7 +71,8 @@ async function list(){
     } else {
       console.log(resp);
       console.log(resp.toString())
-      return resp.toString();
+      let res = resp.toString();
+      return res;
     }
   });
 };
@@ -92,27 +94,27 @@ document.getElementById("setDataBtn").addEventListener("click", async function()
   let key = document.getElementById('setKeyInput').value;
   let val = document.getElementById('setValInput').value;
   sett(key, val).then(res => {
-    document.getElementById('resSetBox').value = res;
+    document.getElementById('resSetBox').innerHTML = res;
   });
 });
 
 document.getElementById("getDataBtn").addEventListener("click", async function(){
   let key = document.getElementById('getKeyInput').value;
   gett(key).then(res => {
-    document.getElementById('resGetBox').value = res;
+    document.getElementById('resGetBox').innerHTML = res;
   });
 });
 
 document.getElementById("listDataBtn").addEventListener("click", async function(){
   list().then(res => {
-    document.getElementById('resListBox').value = res;
+    document.getElementById('resListBox').innerHTML = res;
   });
 });
 
 document.getElementById("remDataBtn").addEventListener("click", async function(){
   let key = document.getElementById('remKeyInput').value;
   remm(key).then(res => {
-    document.getElementById('resRemBox').value = res;
+    document.getElementById('resRemBox').innerHTML = res;
   });
 });
 
