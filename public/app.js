@@ -26,13 +26,11 @@ document.getElementById("setDataBtn").addEventListener("click", async function()
   let key = document.getElementById('setKeyInput').value;
   let val = document.getElementById('setValInput').value;
   let res = await sett(key, val);
-  console.log(res);
   document.getElementById('resSetBox').value = res;
 });
 document.getElementById("getDataBtn").addEventListener("click", async function(){
   let key = document.getElementById('getKeyInput').value;
   let val = await gett(key);
-  console.log(val);
   document.getElementById('resGetBox').value = val;
 });
 
