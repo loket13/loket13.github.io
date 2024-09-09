@@ -38,83 +38,104 @@ document.getElementById("closeBtn").addEventListener("click", function (){
 });
 
 
-async function sett(k,v){
-  tg.CloudStorage.setItem(k, v, function(error, resp) {
-    if (error) {
-       console.log(error);
-       return 'Error';
-    } else {
+async function sett(k, v) {
+  return new Promise((resolve, reject) => {
+    tg.CloudStorage.setItem(k, v, function(error, resp) {
+      if (error) {
+        console.log(error);
+        reject('Error');
+      } else {
         console.log(resp);
-        console.log(resp.toString());
-        if(resp = true){
-          return 'Saved';
-        };
-    }
-})};
+        if (resp === true) {
+          resolve('Saved');
+        } else {
+          resolve(resp.toString());
+        }
+      }
+    });
+  });
+}
 
-async function gett(k){
-  tg.CloudStorage.getItem(k, function(error, resp){
-    if (error) {
-      return error;
-    } else {
-      console.log(resp);
-      console.log(resp.toString());
-      return resp;
-    }
+async function gett(k) {
+  return new Promise((resolve, reject) => {
+    tg.CloudStorage.getItem(k, function(error, resp) {
+      if (error) {
+        reject(error);
+      } else {
+        console.log(resp);
+        resolve(resp ? resp.toString() : 'No value found');
+      }
+    });
   });
-};
-async function list(){
-  tg.CloudStorage.getKeys(function(error, resp){
-    if (error) {
-      return error;
-    } else {
-      console.log(resp);
-      console.log(resp.toString())
-      return resp;
-    }
-  });
-};
-async function remm(k){
-  tg.CloudStorage.removeItem(k, function(error, resp){
-    if (error) {
-      return error;
-    } else {
-      console.log(resp);
-      console.log(resp.toString());
-      if(resp = true){
-        return 'Removed';
-      };
-    }
-  });
-};
+}
 
-document.getElementById("setDataBtn").addEventListener("click", async function(){
+async function list() {
+  return new Promise((resolve, reject) => {
+    tg.CloudStorage.getKeys(function(error, resp) {
+      if (error) {
+        reject(error);
+      } else {
+        console.log(resp);
+        resolve(resp ? resp.toString() : 'No keys found');
+      }
+    });
+  });
+}
+
+async function remm(k) {
+  return new Promise((resolve, reject) => {
+    tg.CloudStorage.removeItem(k, function(error, resp) {
+      if (error) {
+        reject(error);
+      } else {
+        console.log(resp);
+        if (resp === true) {
+          resolve('Removed');
+        } else {
+          resolve(resp.toString());
+        }
+      }
+    });
+  });
+}
+
+// Event listeners
+document.getElementById("setDataBtn").addEventListener("click", async function() {
   let key = document.getElementById('setKeyInput').value;
   let val = document.getElementById('setValInput').value;
   sett(key, val).then(res => {
     document.getElementById('resSetBox').innerHTML = res;
+  }).catch(error => {
+    document.getElementById('resSetBox').innerHTML = error;
   });
 });
 
-document.getElementById("getDataBtn").addEventListener("click", async function(){
+document.getElementById("getDataBtn").addEventListener("click", async function() {
   let key = document.getElementById('getKeyInput').value;
   gett(key).then(res => {
     document.getElementById('resGetBox').innerHTML = res;
+  }).catch(error => {
+    document.getElementById('resGetBox').innerHTML = error;
   });
 });
 
-document.getElementById("listDataBtn").addEventListener("click", async function(){
+document.getElementById("listDataBtn").addEventListener("click", async function() {
   list().then(res => {
     document.getElementById('resListBox').innerHTML = res;
+  }).catch(error => {
+    document.getElementById('resListBox').innerHTML = error;
   });
 });
 
-document.getElementById("remDataBtn").addEventListener("click", async function(){
+document.getElementById("remDataBtn").addEventListener("click", async function() {
   let key = document.getElementById('remKeyInput').value;
   remm(key).then(res => {
     document.getElementById('resRemBox').innerHTML = res;
+  }).catch(error => {
+    document.getElementById('resRemBox').innerHTML = error;
   });
 });
+
 
 // Handle the main button being pressed
 tg.MainButton.onClick(function (){
