@@ -20,9 +20,7 @@ async function sett(k,v){
     if (err) {
        console.log('Error: ' + error);
     } else {
-        if (saved) {
-          console.log(saved.toString())
-        }
+        console.log(saved.toString())
     }
 })};
 
@@ -31,7 +29,7 @@ async function gett(k){
     if (error) {
       console.log(error, null);
   } else {
-      console.log(null, value.toString());
+      console.log(value.toString());
   }
   });
 };
