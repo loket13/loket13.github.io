@@ -28,6 +28,8 @@ window.Telegram.WebApp.ready();
 const tg = window.Telegram.WebApp;
 tg.expand();
 console.log('id: '+ tg.initDataUnsafe?.user?.id);
+console.log('fn: '+ tg.initDataUnsafe?.user?.first_name);
+
 // Set the main button color, text, and visibility
 tg.MainButton.text = "Press Me!";
 tg.MainButton.color = "#FF5722";
