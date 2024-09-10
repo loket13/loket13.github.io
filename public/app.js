@@ -27,7 +27,6 @@ window.Telegram.WebApp.ready();
 // Store the Telegram WebApp object
 const tg = window.Telegram.WebApp;
 tg.expand();
-console.log( 'id(): '+ tg.WebAppUser.id());
 console.log('id: '+ tg.WebAppUser.id);
 // Set the main button color, text, and visibility
 tg.MainButton.text = "Press Me!";
